@@ -9,14 +9,14 @@ import ICategory from "../../interfaces/category";
 import IProduct from "../../interfaces/product";
 
 // Mock category objects
-const electronicsCategory: ICategory = { id: "101", _id: "101", name: "Electronics" };
-const furnitureCategory: ICategory = { id: "102", _id: "102", name: "Furniture" };
+const Elgiganten: ICategory = { id: "101", _id: "101", name: "Elgiganten" };
+const Ikea: ICategory = { id: "102", _id: "102", name: "Ikea" };
 
 // Mock product data for offline testing
 const MOCK_PRODUCTS: IProduct[] = [
-  { _id: "1", name: "Laptop", category: electronicsCategory, quantity: 10, description: "A powerful laptop", expiryDate: 2026 },
-  { _id: "2", name: "Phone", category: electronicsCategory, quantity: 25, description: "Latest smartphone", expiryDate: 2025 },
-  { _id: "3", name: "Desk Chair", category: furnitureCategory, quantity: 5, description: "Ergonomic office chair", expiryDate: 2027 },
+  { _id: "1", name: "Laptop", category: Elgiganten, quantity: 10, description: "Laptop", expiryDate: 2026 },
+  { _id: "2", name: "Phone", category: Elgiganten, quantity: 25, description: "Phone", expiryDate: 2025 },
+  { _id: "3", name: "Chair", category: Ikea, quantity: 5, description: "Chair", expiryDate: 2027 },
 ];
 
 type Props = { navigation: any };
@@ -29,14 +29,12 @@ const MockProducts = (props: Props) => {
 
   // Delete product function
   const deleteProduct = (id: string) => {
-    // Remove the product from the products list
     const updatedProducts = products.filter((product) => product._id !== id);
       
     // Update both the products and filteredProducts states
     setProducts(updatedProducts);
     setFilteredProducts(updatedProducts);
   };
-      
 
   // Filter products based on search input
   const searchProduct = (text: string) => {
