@@ -22,7 +22,6 @@ const MockProductItem = ({ item, onDelete }: Props) => {
         x{item.quantity}
       </Text>
 
-      {/* Trashcan Icon */}
       <TouchableOpacity onPress={() => onDelete(item._id)}>
         <Icon name="trash" size={20} color="red" />
       </TouchableOpacity>
