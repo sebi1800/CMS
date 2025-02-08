@@ -9,7 +9,6 @@ import { changeProductQuantity } from './../../features/list/listSlice';
 import QRCode from 'react-native-qrcode-svg';
 import moment from "moment-timezone";
 
-
 type Props = {
   route: any;
 };
@@ -38,14 +37,13 @@ const SingleListItem = ({ route }: Props) => {
       });
 
       if (response.status === 202 || response.status === 200) {
-        setTimer(10); // set the timer to 120 seconds (2 minutes)
+        setTimer(10); 
 
         // Update the state with the new quantity
         const newQuantity = updatedQuantity - 1;
         setUpdatedQuantity(newQuantity);
         dispatch(changeProductQuantity({ id: list.product._id, quantity: newQuantity }));
       
-        
         Toast.show({
           topOffset: 60,
           type: "success",
