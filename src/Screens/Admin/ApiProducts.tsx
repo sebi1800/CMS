@@ -2,15 +2,15 @@ import { View, Text, FlatList } from "react-native";
 import React, { useCallback, useEffect, useState } from "react";
 import { useFocusEffect } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useFetchData } from "../../hooks/useFetchData";  // Custom hook to fetch data
-import IProduct from "../../interfaces/product";  // IProduct interface
-import { API_URL } from "../../constants";  // API URL constant
-import tw from "tailwind-react-native-classnames";  // Tailwind CSS for React Native
-import MockProductItem from "./MockProductItem";  // ProductItem component for each item in the list
-import Loading from "../../shared/UI/Loading";  // Loading component for showing loading state
-import SearchInput from "../../shared/UI/SearchInput";  // Search input component
-import useDebounce from "../../hooks/useDebounced";  // Debounced hook for search input
-import Button from "../../shared/UI/Button";  // Button component for UI actions
+import { useFetchData } from "../../hooks/useFetchData";  
+import IProduct from "../../interfaces/product";  
+import { API_URL } from "../../constants";  
+import tw from "tailwind-react-native-classnames";  
+import MockProductItem from "./MockProductItem";  
+import Loading from "../../shared/UI/Loading";  e
+import SearchInput from "../../shared/UI/SearchInput";  
+import useDebounce from "../../hooks/useDebounced";  
+import Button from "../../shared/UI/Button";  
 
 type Props = { navigation: any };
 
@@ -19,7 +19,7 @@ const ApiProducts = (props: Props) => {
     "GET",
     `${API_URL}/products`,
     "products"
-  );  // Fetch products initially
+  );  
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>(products);  // For filtering and displaying products
   const [searchValue, setSearchValue] = useState("");
   const debouncedSearchValue = useDebounce(searchValue, 500);
@@ -54,7 +54,7 @@ const ApiProducts = (props: Props) => {
     fetch(`${API_URL}/products/${id}`, {
       method: "DELETE",
       headers: {
-        "Authorization": `Bearer ${token}`,  // Include token if required by your API
+        "Authorization": `Bearer ${token}`,  
       },
     })
       .then((response) => {
@@ -63,7 +63,7 @@ const ApiProducts = (props: Props) => {
         }
         // After successful deletion, update filteredProducts
         const updatedProducts = filteredProducts.filter((product) => product._id !== id);
-        setFilteredProducts(updatedProducts);  // Update filteredProducts state
+        setFilteredProducts(updatedProducts);  
       })
       .catch((error) => {
         console.error("Error deleting product:", error);
@@ -105,7 +105,7 @@ const ApiProducts = (props: Props) => {
       <FlatList
         ListEmptyComponent={<Text style={tw`text-2xl mt-4 text-center`}>No products found</Text>}
         data={filteredProducts}  // Use filteredProducts to render the list
-        ListHeaderComponent={getTableHeader}  // Call the getTableHeader function here
+        ListHeaderComponent={getTableHeader}  
         renderItem={({ item }) => (
           <MockProductItem
             key={item._id}
